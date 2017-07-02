@@ -27,20 +27,21 @@ void concatenate(cstring& a, cstring b)
 		newstr[old_length + i] = b[i];
 		i++;
 	}
-	delete[] a;
+	delete[3] a;
 	a = newstr;
 
 }
-
 void main()
 {
+  /*char* x = "abc";
+	cout<<strlen(x)<<endl;  
+	x[1] = 'c';                无法改变堆里的常量
+	cout << x;*/
 	cstring a = new char[3];
-	a[0] = 'a';
-	a[1] = 'b';
-	a[2] = 0;
+	//a = "ab";  错误，这将a指向了一个在堆里的变量，原来New的内存直接dangle
+	a[0] ='a' ; a[1] = 'b'; a[2] = 0;
 	cstring b = new char[3];
 	b = "34";
-	//concatenate(a, b);
+	concatenate(a, b);
 	cout << a;
-
 }
